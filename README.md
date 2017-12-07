@@ -31,7 +31,6 @@ Listaukset muuttavat navigaatiota niin, että vain otsikko ja päivämäärä n�
 ```
 
 
-
 ## Uutisten käsittely:
 
 Uutisiin liittyy seuraavia toiminnallisuuksia.
@@ -58,3 +57,8 @@ Kuva
 Uutinen
 Päivämäärä
 ```
+
+## Luokka/tietokantakaavio:
+
+![Kaavio](https://github.com/pidrmasiin/uutiset/blob/master/uutiset.jpg?raw=true)
+
