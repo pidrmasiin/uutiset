@@ -17,8 +17,8 @@ public class AliveController {
 
     @GetMapping("/")
     public String list(Model model) {
-//        model.addAttribute("items", itemRepository.findAll());
-        return "test";
+    model.addAttribute("items", itemRepository.findAll());
+    return "index";
     }
 
     @PostMapping("/")
