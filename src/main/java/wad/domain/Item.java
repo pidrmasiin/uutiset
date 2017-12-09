@@ -25,12 +25,12 @@ public class Item extends AbstractPersistable<Long> {
     private String text;
     private Integer reads;
     private LocalDateTime time;
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
-    private byte[] content;
-    @ManyToMany
-    private List<Writer> writers;
-    @ManyToMany
-    private List<Category> categories;
+//    @Lob
+//    @Basic(fetch = FetchType.LAZY)
+//    private byte[] content;
+//    @ManyToMany
+//    private List<Writer> writers;
+//    @ManyToMany
+//    private List<Category> categories;
 
 }
