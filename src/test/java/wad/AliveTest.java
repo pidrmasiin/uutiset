@@ -1,6 +1,6 @@
 package wad;
 
-import fi.helsinki.cs.tmc.edutestutils.Points;
+
 import org.junit.*;
 import static org.junit.Assert.assertTrue;
 

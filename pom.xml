@@ -25,7 +25,7 @@
     </parent>
 
     <dependencies>
-
+       
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -66,14 +66,7 @@
             <scope>test</scope>
         </dependency>
         
-        <!-- TMC -->
-        <dependency>
-            <groupId>fi.helsinki.cs.tmc</groupId>
-            <artifactId>edu-test-utils</artifactId>
-            <version>0.4.2</version>
-            <scope>test</scope>
-        </dependency>
-        
+       
         <!-- FluentLenium -->
         <dependency>
             <groupId>org.fluentlenium</groupId>
@@ -151,17 +144,6 @@
             <url>https://repo.spring.io/milestone</url>
             <snapshots>
                 <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-        <pluginRepository>
-            <id>tmc</id>
-            <name>TMC repo</name>
-            <url>http://maven.testmycode.net/nexus/content/groups/public</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
             </snapshots>
         </pluginRepository>
     </pluginRepositories>

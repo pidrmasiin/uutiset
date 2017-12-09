@@ -21,7 +21,6 @@ public class DefaultController {
 
     @GetMapping("/")
     public String list(Model model) {
-        
         model.addAttribute("items", itemRepository.findAll());
         return "index";
     }
