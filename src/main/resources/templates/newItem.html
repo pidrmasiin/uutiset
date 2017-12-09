@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
             <meta charset="UTF-8" />
-            <title>Uutiset</title>
+            <title>Lisää uutinen</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -21,26 +26,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/uutistenMuokkaaminen">Muokkaa uutisia</a>
                     </li>
-            </div>
         </nav>
-        
         <div class="jumbotron">
-            <div class="container">
-                <h2>Uutiset</h2>
-                <p>Uusimmat uutiset</p>
-                <table>
-                    <tr>
-                        <th>Title</th>
-                        <th></th>
-                    </tr>
+            <div class="container"><h2>Add new</h2>
 
-                    <tr th:each="item : ${items}">
-                        <td><a th:href="@{/{item}/uutinen(item=${item.id})}" th:text="${item.name}">Item name</a></td>
-
-                    </tr>
-                </table>
-            </div>
-        </div>
+                <form method="POST" th:action="@{/post}">
+                    <input type="text" name="name"/>
+                    <input type="submit" value="Add"/>
+                </form></div></div>
     </body>
-
 </html>

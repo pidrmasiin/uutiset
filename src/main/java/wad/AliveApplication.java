@@ -11,14 +11,14 @@ public class AliveApplication {
     }
 
     public static String githubUrl() {
-        return "https://github.com/pidrmasiin/aliveTest";
+        return "https://github.com/pidrmasiin/uutiset";
     }
 
     public static String travisUrl() {
-        return "https://travis-ci.org/pidrmasiin/aliveTest";
+        return "https://travis-ci.org/pidrmasiin/uutiset";
     }
 
     public static String herokuUrl() {
-        return "https://young-forest-25181.herokuapp.com/";
+        return "https://uutista.herokuapp.com";
     }
 }
