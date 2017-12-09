@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -26,16 +31,16 @@
         
         <div class="jumbotron">
             <div class="container">
-                <h2>Uutiset</h2>
-                <p>Uusimmat uutiset</p>
+                <h2>Muokkaa uutista</h2>
+                <p>Valitse muokattava uutinen</p>
                 <table>
                     <tr>
-                        <th>Title</th>
+                        <th>Uutisten otsikot</th>
                         <th></th>
                     </tr>
 
                     <tr th:each="item : ${items}">
-                        <td><a th:href="@{/{item}/uutinen(item=${item.id})}" th:text="${item.name}">Item name</a></td>
+                        <td><a th:href="@{/{item}/(item=${item.id})}" th:text="${item.name}">Item name</a></td>
 
                     </tr>
                 </table>

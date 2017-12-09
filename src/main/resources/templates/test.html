@@ -4,7 +4,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Uutiset</title>
         <meta charset="UTF-8">
@@ -12,6 +12,12 @@ and open the template in the editor.
     </head>
     <body>
         <h2>Uutinen</h2>
-        <div>Tänään on suomi100</div>
+    
+        
+        <div>
+            <ul>
+                <li th:each="item : ${items}" th:text="${item.name}"></li>
+            </ul>
+        </div>
     </body>
 </html>
