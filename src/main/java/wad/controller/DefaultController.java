@@ -23,7 +23,7 @@ public class DefaultController {
     public String list(Model model) {
         
         model.addAttribute("items", itemRepository.findAll());
-        return "index";
+        return "test";
     }
     
     @GetMapping("/lisaaUutinen")
