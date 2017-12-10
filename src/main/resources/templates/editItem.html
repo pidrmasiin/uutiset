@@ -27,21 +27,35 @@ and open the template in the editor.
                     <li class="nav-item">
                         <a class="nav-link" href="/uutistenMuokkaaminen">Muokkaa uutisia</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/hallinnoiKategorioita">Hallinnoi kategorioita</a>
+                    </li>
             </div>
         </nav>
         <div class="jumbotron">
             <div class="container">
                 <h4>Otsikko:</h4><p th:text="${item.name}"></p>
-                <h4>Päivämäärä:</h4><p th:text="   ${item.time}"></p>
-                <h4>Lukukerrat:</h4><p th:text="   ${item.reads}"></p>
-                <h4>Ingressi:</h4><p th:text="   ${item.lead}"></p>
-                <h4>Juttu:</h4><p th:text="   ${item.text}"></p>
+                <h4>Päivämäärä:</h4><p th:text="${item.time}"></p>
+                <h4>Kategoriat:</h4>
+                <tr th:each="cat : ${itemCat}">
+                    <li><a th:text="${cat}">Item cateogory</a></li>
+                </tr>
+                <h4>Lukukerrat:</h4><p th:text="${item.reads}"></p>
+               
+                <h4>Ingressi:</h4><p th:text="${item.lead}"></p>
+                <h4>Juttu:</h4><p th:text="${item.text}"></p>
                 <br></br>
                 <h3>Muokkaa</h3>
                 <table>
                     <li><form method="POST" th:action="@{/newName/{item}(item=${item.id})}">
                             <input type="text" name="name"/>
                             <input type="submit" value="Uusi otsikko"/>
+                        </form></li>
+                    <li> <form method="POST" th:action="@{/asetaKategoria/{id}(id=${item.id})}">
+                            <select name="categoryId">
+                                <option th:each="category : ${categories}"  th:value="${category.id}" th:text="${category.name}"></option>
+                            </select>
+                            <input type="submit" value="Aseta"/>
                         </form></li>
                     <li> <form method="POST" th:action="@{/setLead/{item}(item=${item.id})}">
                             <input type="text" name="lead"/>

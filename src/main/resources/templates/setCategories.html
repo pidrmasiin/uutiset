@@ -4,11 +4,11 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
             <meta charset="UTF-8" />
-            <title>Lisää uutinen</title>
+            <title>Kategorioiden hallinta</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -29,13 +29,30 @@ and open the template in the editor.
                     <li class="nav-item">
                         <a class="nav-link" href="/hallinnoiKategorioita">Hallinnoi kategorioita</a>
                     </li>
+            </div>
         </nav>
         <div class="jumbotron">
+            <div class="container">
+                
+                <table>
+                    <tr>
+                        <th><h2>Kategoriat</h2></th>
+                        <th></th>
+                    </tr>
+
+                    <tr th:each="category : ${categories}">
+                        <td th:if="${category.name != null}"><a th:text="${category.name}">Item name</a></td>
+                    </tr>
+                </table>
+            </div>
+
             <div class="container"><h2>Add new</h2>
 
-                <form method="POST" th:action="@{/post}">
+                <form method="POST" th:action="@{/lisaaKategoria}">
                     <input type="text" name="name"/>
                     <input type="submit" value="Add"/>
-                </form></div></div>
+                </form></div>
+
+        </div>
     </body>
 </html>

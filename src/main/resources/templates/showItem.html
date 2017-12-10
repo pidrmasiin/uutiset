@@ -26,6 +26,9 @@ and open the template in the editor.
                     <li class="nav-item">
                         <a class="nav-link" href="/uutistenMuokkaaminen">Muokkaa uutisia</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/hallinnoiKategorioita">Hallinnoi kategorioita</a>
+                    </li>
             </div>
         </nav>
 
@@ -36,6 +39,10 @@ and open the template in the editor.
                 <h4>Lukukerrat:</h4><p th:text="   ${item.reads}"></p>
                 <h4>Ingressi:</h4><p th:text="   ${item.lead}"></p>
                 <h4>Juttu:</h4><p th:text="   ${item.text}"></p>
+                <h4>Kategoriat</h4>
+                <tr th:each="category : ${categories}">
+                    <li><a th:text="${category}">Item name</a></li>
+                </tr>
             </div>
         </div>
     </body>

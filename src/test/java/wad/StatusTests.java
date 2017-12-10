@@ -49,11 +49,7 @@ public class StatusTests {
             .andExpect(status().isOk());
     }
     
-    @Test
-    public void lisaaUutinenStatusOk() throws Exception {
-        mockMvc.perform(post("/post"))
-            .andExpect(status().isOk());
-    }
+   
     
    
 }

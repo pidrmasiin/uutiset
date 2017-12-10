@@ -21,6 +21,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/uutistenMuokkaaminen">Muokkaa uutisia</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/hallinnoiKategorioita">Hallinnoi kategorioita</a>
+                    </li>
             </div>
         </nav>
         
@@ -28,15 +31,15 @@
             <div class="container">
                 <h2>Uutiset</h2>
                 <p>Uusimmat uutiset</p>
-                <table>
+                <table style="border-collapse: separate; border-spacing: 10px;">
                     <tr>
-                        <th>Title</th>
-                        <th></th>
+                        <th><h5>Otsikko</h5></th>
+                        <th><h5>Julkaisun ajankohta</h5></th>
                     </tr>
 
                     <tr th:each="item : ${items}">
                         <td><a th:href="@{/{item}/uutinen(item=${item.id})}" th:text="${item.name}">Item name</a></td>
-
+                        <td><a th:text="${item.time}">Koska</a></td>
                     </tr>
                 </table>
             </div>
