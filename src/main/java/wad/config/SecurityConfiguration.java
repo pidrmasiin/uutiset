@@ -28,6 +28,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // mahdollisuus kaikille. 
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
+                .antMatchers("/lukujenMukaan").permitAll()
                 .antMatchers("/uutinen/*").permitAll()
                 .anyRequest().authenticated().and()
                 .formLogin().permitAll().and()
