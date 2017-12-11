@@ -1,5 +1,14 @@
 # UutisetHarjoitus
 
+
+Kirjautuminen
+```
+user:toimittaja
+password:paa
+
+```
+
+
 Harjoitustyö, jossa luodaan uutissivusto. 
 
 ## Haasteita
@@ -10,6 +19,8 @@ Yritin tallentaa kuvia tietokantaa, mutta en onnistunut. Virheviesti oli tämä:
 
 Myös testien kanssa oli ongelmia, joten niitä on melko rajallinen määrä.
 
+Validointiin asti en ehtinyt.
+
 ## Toiminnallisuus
 
 Seuraavassa sivuston toiminnallisuuden esittely
@@ -18,18 +29,18 @@ Seuraavassa sivuston toiminnallisuuden esittely
 
 Sivuston ulkoasu on seuraavanlainen.
 
+
 ### Etusivu:
 
-Näyttää 5 uusinta uutista.
 
-### Navigaatio:
+Näyttää 5 uusinta uutista ja uutiseen liittyvän:
+```
+Otsikon
+Kuvan
+Ingressin
 
 ```
-Otsikko
-Kuva
-Ingressi
 
-```
 
 #### Toiminnallisuus:
 
@@ -41,6 +52,10 @@ Listaa viikon lukukertojen perusteella.
 ```
 Listaaminen kategorioiden perusteella jäi tekemättä
 ```
+
+### Navigaatio:
+
+Kirjaudu linkin kautta pääsee muokkaamaan uutisia
 
 
 ## Uutisten käsittely:
@@ -67,17 +82,21 @@ Yksittäisen kirjoittajan lisääminen kirjoittajat-kategoriaan.
 
 ### Muokkaa uutista:
 
+Uutista voi sen lisäämisen jälkeen muokata seuraavilta osin
+
 ```
 Otsikko
 Ingressi
 Kuva
-Uutinen
-Päivämäärä
+Juttu
 Kirjoittaja(t)
 Kategoria(t)
 ```
 
+Kirjoittajia ja kategorioita voi vain lisätä. Lisäksi koko uutisen voi poistaa.
+
 ## Luokka/tietokantakaavio:
+Päivämäärä näyttää myös kellon ja kuva on siis String-muotoinen url-osoite.
 
 ![Kaavio](https://github.com/pidrmasiin/uutiset/blob/master/uutiset.jpg?raw=true)
 

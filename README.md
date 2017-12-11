@@ -1,5 +1,12 @@
 # UutisetHarjoitus
 
+Kirjautuminen
+```
+user:toimittaja
+password:paa
+
+```
+
 Harjoitustyö, jossa luodaan uutissivusto. Seuraavassa sivuston tarjoama toiminnallisuus.
 
 ## Haasteita
@@ -10,6 +17,8 @@ Yritin tallentaa kuvia tietokantaa, mutta en onnistunut. Virheviesti oli tämä:
 
 Myös testien kanssa oli ongelmia, joten niitä ei nyt ole.
 
+Validointiin asti en ehtinyt.
+
 
 
 ## Sivuston toiminta
@@ -18,16 +27,14 @@ Sivuston ulkoasu on seuraavanlainen.
 
 ### Etusivu:
 
-Näyttää 5 uusinta uutista.
-
-### Navigaatio:
+Näyttää 5 uusinta uutista ja uutiseen liittyvän:
+```
+Otsikon
+Kuvan
+Ingressin
 
 ```
-Otsikko
-Kuva
-Ingressi
 
-```
 
 #### Toiminnallisuus:
 
@@ -39,6 +46,9 @@ Listaa kategorian perusteella.
 ```
 Listaukset muuttavat navigaatiota niin, että vain otsikko ja päivämäärä näkyvät.
 ```
+### Navigaatio:
+
+Kirjaudu linkin kautta pääsee muokkaamaan uutisia
 
 
 ## Uutisten käsittely:

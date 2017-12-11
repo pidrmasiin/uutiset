@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -15,39 +20,29 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="/">Uutiset <span class="sr-only">(current)</span></a>
                     </li>
-                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/lisaaUutinen">Lisää uutinen</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/uutistenMuokkaaminen">Muokkaa uutisia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/hallinnoiKategorioita">Hallinnoi kategorioita</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/hallinnoiKirjoittajia">Hallinnoi kirjoittajia</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/kirjaudu">Kirjaudu</a>
                     </li>
             </div>
         </nav>
-
         <div class="jumbotron">
             <div class="container">
-                <h2>Uutiset</h2>
-                <p>Uusimmat uutiset</p>
-
-
-                <table style="border-collapse: separate; border-spacing: 10px;">
-                    <tr>
-                        <th><h5>Otsikko</h5></th>
-                        <th><h5>Ingressi</h5></th>
-                        <th><h5>Kuva</h5></th>
-                    </tr>
-
-                    <tr th:each="item : ${items}">
-                        <td><a th:href="@{/uutinen/{item}(item=${item.id})}" th:text="${item.name}">Item name</a></td>
-                        <td><a th:text="${item.lead}">Koska</a></td>
-                        <td><img th:src="${item.image}" alt="Ei kuvaa" height="40" width="80">
-                    </tr>
-
-                </table>
-                <br></br>
-                <form action="/lukujenMukaan">
-                    <input type="submit" value="Järjestä suuruusjärjestyksessä lukukertojen mukaan" />
+                <form th:action="@{/logout}" method="POST">
+                    <input type="submit" value="Logout"></input>
                 </form>
             </div>
         </div>
     </body>
-
 </html>
