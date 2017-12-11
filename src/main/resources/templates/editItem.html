@@ -45,7 +45,7 @@ and open the template in the editor.
                     <li><a th:text="${cat}">Item cateogory</a></li>
                 </tr>
                 <h4>Lukukerrat:</h4><p th:text="${item.reads}"></p>
-                <h4>Kuva:</h4><img th:src="${item.image}" alt="Ei kuvaa" height="200" width="400"> 
+                <h4>Kuva:</h4><img th:src="${item.image}" alt="Ei kuvaa" height="200" width="400"> <p>Url ei voi olla kovin pitkä, sillä en saanut @Lob annotaatiota toimimaan herokussa</p>
                     <h4>Kirjoittaja(t):</h4>
                     <tr th:each="wri : ${itemWri}">
                         <li><a th:text="${wri}">Item writers</a></li>
