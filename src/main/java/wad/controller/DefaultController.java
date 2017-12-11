@@ -19,6 +19,7 @@ import wad.domain.Category;
 import wad.domain.Item;
 import wad.repository.CategoryRepository;
 import wad.repository.ItemRepository;
+import wad.repository.WriterRepository;
 import wad.service.CategoryService;
 
 @Controller
@@ -31,7 +32,9 @@ public class DefaultController {
     private CategoryRepository categoryRepository;
     
     @Autowired
-    private CategoryService categoryService;
+    private WriterRepository writerRepository;
+    
+   
 
     @GetMapping("/hallinnoiKategorioita")
     public String listCategories(Model model) {
@@ -39,10 +42,24 @@ public class DefaultController {
         model.addAttribute("categories", this.categoryRepository.findAll());
         return "setCategories";
     }
+    
+    @GetMapping("/hallinnoiKirjoittajia")
+    public String listWriters(Model model) {
+        
+        model.addAttribute("writers", this.writerRepository.findAll());
+        return "setWriters";
+    }
 
     @GetMapping("/")
     public String list(Model model) {
-        Pageable pageable = PageRequest.of(0, 100, Sort.Direction.DESC, "time");
+        Pageable pageable = PageRequest.of(0, 5, Sort.Direction.DESC, "time");
+        model.addAttribute("items", itemRepository.findAll(pageable));
+        return "index";
+    }
+    
+    @GetMapping("/lukujenMukaan")
+    public String sortByReads(Model model) {
+        Pageable pageable = PageRequest.of(0, 5, Sort.Direction.DESC, "reads");
         model.addAttribute("items", itemRepository.findAll(pageable));
         return "index";
     }
@@ -60,6 +77,7 @@ public class DefaultController {
         this.itemRepository.save(i);
         model.addAttribute("item", itemRepository.findById(id).get());
         model.addAttribute("categories", itemRepository.findById(id).get().stringCategories());
+         model.addAttribute("itemWri", itemRepository.findById(id).get().stringWriters());
         
         return "showItem";
     }

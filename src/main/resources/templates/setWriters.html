@@ -8,7 +8,7 @@ and open the template in the editor.
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
             <meta charset="UTF-8" />
-            <title>Uutiset</title>
+            <title>Kategorioiden hallinta</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -34,24 +34,28 @@ and open the template in the editor.
                     </li>
             </div>
         </nav>
-        
         <div class="jumbotron">
             <div class="container">
-                <h2>Muokkaa uutista</h2>
-                <p>Valitse muokattava uutinen</p>
+                
                 <table>
                     <tr>
-                        <th>Uutisten otsikot</th>
+                        <th><h2>Kategoriat</h2></th>
                         <th></th>
                     </tr>
 
-                    <tr th:each="item : ${items}">
-                        <td><a th:href="@{/{item}/(item=${item.id})}" th:text="${item.name}">Item name</a></td>
-
+                    <tr th:each="writer : ${writers}">
+                        <td th:if="${writer.name != null}"><a th:text="${writer.name}">Item name</a></td>
                     </tr>
                 </table>
             </div>
+
+            <div class="container"><h2>Add new</h2>
+
+                <form method="POST" th:action="@{/lisaaKirjoittaja}">
+                    <input type="text" name="name"/>
+                    <input type="submit" value="Add"/>
+                </form></div>
+
         </div>
     </body>
-
 </html>

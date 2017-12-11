@@ -5,6 +5,7 @@
  */
 package wad.controller;
 
+import java.io.IOException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,11 +15,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import wad.domain.Category;
 import wad.domain.Item;
 import wad.repository.CategoryRepository;
 import wad.repository.ItemRepository;
+import wad.repository.WriterRepository;
 import wad.service.CategoryService;
+import wad.service.WriterService;
 
 /**
  *
@@ -33,13 +38,21 @@ public class ItemController {
     @Autowired
     private CategoryRepository categoryRepository;
     
+    @Autowired WriterRepository writerRepository;
+    
+    @Autowired
+    private WriterService writerService;
+
     @Autowired
     private CategoryService categoryService;
 
     @GetMapping("/{id}")
     public String list(Model model, @PathVariable Long id) {
         List<String> c = this.itemRepository.getOne(id).stringCategories();
+        List<String> w = this.itemRepository.getOne(id).stringWriters();
+        model.addAttribute("itemWri", w);
         model.addAttribute("itemCat", c);
+        model.addAttribute("writers", this.writerRepository.findAll());
         model.addAttribute("categories", this.categoryRepository.findAll());
         model.addAttribute("item", itemRepository.findById(id).get());
         return "editItem";
@@ -65,10 +78,19 @@ public class ItemController {
 
     @PostMapping("/asetaKategoria/{id}")
     public String setCategory(Model model, @PathVariable(value = "id") Long id, @RequestParam(required = false, value = "categoryId") Long categoryId) {
-        if(categoryId != null){
+        if (categoryId != null) {
             this.categoryService.setCategory(id, categoryId);
         }
-        
+
+        return "redirect:/{id}";
+    }
+    
+    @PostMapping("/asetaKirjoittaja/{id}")
+    public String setWriter(Model model, @PathVariable(value = "id") Long id, @RequestParam(required = false, value = "writerId") Long writerId) {
+        if (writerId != null) {
+            this.writerService.setCategory(id, writerId);
+        }
+
         return "redirect:/{id}";
     }
 
@@ -80,5 +102,25 @@ public class ItemController {
         this.itemRepository.save(i);
         return "redirect:/{id}";
     }
+
+    @PostMapping("/image/{id}")
+    public String addImage(@RequestParam("file") MultipartFile file, @PathVariable Long id) throws IOException {
+        if (!file.getContentType().equals("image/jpeg")) {
+            return "redirect:/{id}";
+        }
+ 
+        Item i = this.itemRepository.getOne(id);
+        i.setImage(file.getBytes());
+        this.itemRepository.save(i);
+ 
+        return "redirect:/{id}";
+    }
+    
+    @GetMapping(path = "/image/{id}/content", produces = "image/jpg")
+    @ResponseBody
+    public byte[] getContent(@PathVariable Long id) {
+        return this.itemRepository.getOne(id).getImage();
+    }
+ 
 
 }

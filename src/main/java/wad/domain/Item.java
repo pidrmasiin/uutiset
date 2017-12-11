@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -24,13 +25,25 @@ public class Item extends AbstractPersistable<Long> {
     private String text;
     private Integer reads;
     private LocalDateTime time;
+    @Lob
+    private byte[] image;
     @ManyToMany
     private List<Category> categories;
+    @ManyToMany
+    private List<Writer> writers;
     
     public ArrayList<String> stringCategories(){
         ArrayList<String> list = new ArrayList<>();
         for(int i = 0; i < this.categories.size(); i++){
             list.add(this.categories.get(i).getName());
+        }
+        return list;
+    }
+    
+    public ArrayList<String> stringWriters(){
+        ArrayList<String> list = new ArrayList<>();
+        for(int i = 0; i < this.writers.size(); i++){
+            list.add(this.writers.get(i).getName());
         }
         return list;
     }
