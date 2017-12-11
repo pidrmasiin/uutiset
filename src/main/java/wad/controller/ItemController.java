@@ -7,6 +7,7 @@ package wad.controller;
 
 import java.io.IOException;
 import java.util.List;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -102,7 +103,8 @@ public class ItemController {
         this.itemRepository.save(i);
         return "redirect:/{id}";
     }
-
+    
+    @Transactional 
     @PostMapping("/image/{id}")
     public String addImage(@RequestParam("file") MultipartFile file, @PathVariable Long id) throws IOException {
         if (!file.getContentType().equals("image/jpeg")) {
