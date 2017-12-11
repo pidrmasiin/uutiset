@@ -46,7 +46,6 @@
                     <tr th:each="item : ${items}">
                         <td><a th:href="@{/{item}/uutinen(item=${item.id})}" th:text="${item.name}">Item name</a></td>
                         <td><a th:text="${item.lead}">Koska</a></td>
-                        <td><img th:src="@{/image/{id}/content(id=${item.id})}" height="42" width="42"/></td>
                     </tr>
 
                 </table>

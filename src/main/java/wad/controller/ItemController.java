@@ -104,25 +104,5 @@ public class ItemController {
         return "redirect:/{id}";
     }
     
-    @Transactional 
-    @PostMapping("/image/{id}")
-    public String addImage(@RequestParam("file") MultipartFile file, @PathVariable Long id) throws IOException {
-        if (!file.getContentType().equals("image/jpeg")) {
-            return "redirect:/{id}";
-        }
- 
-        Item i = this.itemRepository.getOne(id);
-        i.setImage(file.getBytes());
-        this.itemRepository.save(i);
- 
-        return "redirect:/{id}";
-    }
-    
-    @GetMapping(path = "/image/{id}/content", produces = "image/jpg")
-    @ResponseBody
-    public byte[] getContent(@PathVariable Long id) {
-        return this.itemRepository.getOne(id).getImage();
-    }
- 
 
 }

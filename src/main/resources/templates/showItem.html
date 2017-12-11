@@ -46,7 +46,6 @@ and open the template in the editor.
                 <h4>Päivämäärä:</h4><p th:text="   ${item.time}"></p>
                 <h4>Lukukerrat:</h4><p th:text="   ${item.reads}"></p>
                 <h4>Ingressi:</h4><p th:text="   ${item.lead}"></p>
-                <h4>Kuva:</h4><img th:src="@{/image/{id}/content(id=${item.id})}" height="250" width="400"/>
                 <h4>Kirjoittaja(t):</h4>
                 <tr th:each="wri : ${itemWri}">
                     <li><a th:text="${wri}">Item writers</a></li>

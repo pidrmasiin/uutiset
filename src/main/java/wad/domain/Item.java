@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,9 +26,8 @@ public class Item extends AbstractPersistable<Long> {
     private String text;
     private Integer reads;
     private LocalDateTime time;
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
-    private byte[] image;
+    @OneToOne
+    private Image image;
     @ManyToMany
     private List<Category> categories;
     @ManyToMany
