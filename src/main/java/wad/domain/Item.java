@@ -26,6 +26,7 @@ public class Item extends AbstractPersistable<Long> {
     private Integer reads;
     private LocalDateTime time;
     @Lob
+    @Basic(fetch = FetchType.LAZY)
     private byte[] image;
     @ManyToMany
     private List<Category> categories;
