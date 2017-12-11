@@ -36,8 +36,28 @@ public class StatusTest {
     }
     
     @Test
-    public void statusOk() throws Exception {
+    public void homeOk() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk());
     }
+    
+    @Test
+    public void lisaaUutinenOk() throws Exception {
+        mockMvc.perform(get("/lisaaUutinen"))
+                .andExpect(status().isOk());
+    }
+    
+    @Test
+    public void uutistenMuokkaaminenOk() throws Exception {
+        mockMvc.perform(get("/uutistenMuokkaaminen"))
+                .andExpect(status().isOk());
+    }
+    
+    @Test
+    public void hallinnoiKategorioitaOk() throws Exception {
+        mockMvc.perform(get("/hallinnoiKirjoittajia"))
+                .andExpect(status().isOk());
+    }
+    
+
 }
