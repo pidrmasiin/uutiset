@@ -76,6 +76,15 @@ public class ItemController {
         this.itemRepository.save(i);
         return "redirect:/{id}";
     }
+    
+    @PostMapping("/setImage/{id}")
+    public String setImage(Model model, @PathVariable Long id, @RequestParam String image) {
+
+        Item i = itemRepository.findById(id).get();
+        i.setImage(image);
+        this.itemRepository.save(i);
+        return "redirect:/{id}";
+    }
 
     @PostMapping("/asetaKategoria/{id}")
     public String setCategory(Model model, @PathVariable(value = "id") Long id, @RequestParam(required = false, value = "categoryId") Long categoryId) {

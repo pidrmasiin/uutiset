@@ -32,29 +32,29 @@ public class ImageController {
     @Autowired
     private ItemRepository itemRepository;
 
-    @PostMapping("/image/{id}")
-    public String save(@RequestParam("file") MultipartFile file, @PathVariable Long id) throws IOException {
-        if (!file.getContentType().equals("image/jpeg")) {
-            return "redirect:/";
-        }
-        Image img = new Image();
-        img.setImage(file.getBytes());
-
-        imageRepository.save(img);
-        Item i = this.itemRepository.getOne(id);
-        i.setImage(img);
-        
-        this.itemRepository.save(i);
-        
-        
-
-        return "redirect:/{id}";
-    }
-
-    @GetMapping(path = "/image/{id}/content", produces = "image/jpeg")
-    @ResponseBody
-    public byte[] getContent(@PathVariable Long id) {
-        
-        return this.itemRepository.getOne(id).getImage().getImage();
-    }
+//    @PostMapping("/image/{id}")
+//    public String save(@RequestParam("file") MultipartFile file, @PathVariable Long id) throws IOException {
+//        if (!file.getContentType().equals("image/jpeg")) {
+//            return "redirect:/";
+//        }
+//        Image img = new Image();
+//        img.setImage(file.getBytes());
+//
+//        imageRepository.save(img);
+//        Item i = this.itemRepository.getOne(id);
+//        i.setImage(img);
+//        
+//        this.itemRepository.save(i);
+//        
+//        
+//
+//        return "redirect:/{id}";
+//    }
+//
+//    @GetMapping(path = "/image/{id}/content", produces = "image/jpeg")
+//    @ResponseBody
+//    public byte[] getContent(@PathVariable Long id) {
+//        
+//        return this.itemRepository.getOne(id).getImage().getImage();
+//    }
 }

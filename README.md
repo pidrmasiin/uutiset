@@ -2,6 +2,16 @@
 
 Harjoitustyö, jossa luodaan uutissivusto. Seuraavassa sivuston tarjoama toiminnallisuus.
 
+## Haasteita
+
+Yritin saada nagigaatiopalkin javascriptillä, jottei tarvistisi copy-pasteta sitä, mutta en osannu.
+
+Yritin tallentaa kuvia tietokantaa, mutta en onnistunut. Virheviesti oli tämä: "Unable to access lob stream"
+
+Myös testien kanssa oli ongelmia, joten niitä ei nyt ole.
+
+
+
 ## Sivuston toiminta
 
 Sivuston ulkoasu on seuraavanlainen.
