@@ -94,7 +94,7 @@ and open the template in the editor.
                      <input type="submit" value="Lisää jpg-kuva"/>
                         </form></li><br><-->
                         <li> <form method="POST" th:action="@{/setText/{item}(item=${item.id})}" id="usrform">
-                                <input type="submit" value="Aseta juttu tai muokkaa sitä"/>
+                                <input type="submit" value="Aseta juttu tai muokkaa sitä"/><p>Juttu ei voi olla kovin pitkä, sillä en saanut @Lob annotaatiota toimimaan herokussa</p>
 
 
                             </form>
