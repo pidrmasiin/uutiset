@@ -26,7 +26,6 @@ public class Item extends AbstractPersistable<Long> {
     private String text;
     private Integer reads;
     private LocalDateTime time;
-    @Lob
     private String image;
     @ManyToMany
     private List<Category> categories;
