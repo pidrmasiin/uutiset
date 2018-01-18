@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Lob;
@@ -23,9 +24,11 @@ public class Item extends AbstractPersistable<Long> {
 
     private String name;
     private String lead;
+    @Column (length = 24000)
     private String text;
     private Integer reads;
     private LocalDateTime time;
+    @Column (length = 24000)
     private String image;
     @ManyToMany
     private List<Category> categories;

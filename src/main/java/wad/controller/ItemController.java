@@ -61,7 +61,9 @@ public class ItemController {
 
     @PostMapping("/newName/{id}")
     public String changeName(Model model, @PathVariable Long id, @RequestParam String name) {
-
+        if(name.isEmpty()){
+            name = "ei otsikkoa";
+        }
         Item i = itemRepository.findById(id).get();
         i.setName(name);
         this.itemRepository.save(i);

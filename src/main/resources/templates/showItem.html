@@ -34,20 +34,22 @@ and open the template in the editor.
 
         <div class="jumbotron">
             <div class="container">
-                <h4>Otsikko:</h4><p th:text="${item.name}"></p>
-                <h4>Päivämäärä:</h4><p th:text="   ${item.time}"></p>
-                <h4>Lukukerrat:</h4><p th:text="   ${item.reads}"></p>
-                <h4>Ingressi:</h4><p th:text="   ${item.lead}"></p>
-                <h4>Kuva:</h4><img th:src="${item.image}" alt="Ei kuvaa" height="200" width="400">
-                <h4>Kirjoittaja(t):</h4>
+                <img th:src="${item.image}" alt="Ei kuvaa" height="200" width="400">
+                <p th:text="   ${item.time}"></p>
+                <h4 th:text="${item.name}"></h4>
+                <p th:text="   ${item.lead}"></p>
+                <p th:text="   ${item.text}"></p>
+                <p>Luvut:</p><p th:text="   ${item.reads}"></p>
+                <h5>Kirjoittaja(t):</h5>
                 <tr th:each="wri : ${itemWri}">
                     <li><a th:text="${wri}">Item writers</a></li>
                 </tr>
-                <h4>Juttu:</h4><p class="ex" th:text="   ${item.text}"></p>
-                <h4>Kategoriat</h4>
+                <h5>Kategoriat</h5>
                 <tr th:each="category : ${categories}">
                     <li><a th:text="${category}">Item name</a></li>
                 </tr>
+                
+                
             </div>
         </div>
     </body>

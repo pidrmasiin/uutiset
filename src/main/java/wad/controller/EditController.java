@@ -78,7 +78,9 @@ public class EditController {
 
     @PostMapping("/post")
     public String create(@RequestParam String name) {
-
+        if(name.isEmpty()){
+            name = "ei otsikkoa";
+        }
         List<Category> categories = new ArrayList();
 
         Item i = new Item();
