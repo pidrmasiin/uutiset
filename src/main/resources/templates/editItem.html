@@ -66,7 +66,7 @@ and open the template in the editor.
 
                         <li><form method="POST" th:action="@{/setImage/{item}(item=${item.id})}">
                                 <input type="text" name="image"/>
-                                <input type="submit" value="Aseta kuvan url"/><p>Url ei voi olla kovin pitkä, sillä en saanut @Lob annotaatiota toimimaan herokussa</p>
+                                <input type="submit" value="Aseta kuvan url"/>
                             </form>
                         </li>
                         <li> <form method="POST" th:action="@{/asetaKategoria/{id}(id=${item.id})}">
@@ -94,7 +94,7 @@ and open the template in the editor.
                      <input type="submit" value="Lisää jpg-kuva"/>
                         </form></li><br><-->
                         <li> <form method="POST" th:action="@{/setText/{item}(item=${item.id})}" id="usrform">
-                                <input type="submit" value="Aseta juttu tai muokkaa sitä"/><p>Juttu ei voi olla kovin pitkä, sillä en saanut @Lob annotaatiota toimimaan herokussa</p>
+                                <input type="submit" value="Aseta juttu tai muokkaa sitä"/>
 
 
                             </form>
@@ -105,8 +105,8 @@ and open the template in the editor.
                         <form th:action="@{/{item}(item=${item.id})}" th:method="DELETE">
                             <input type="submit" style="background-color: red" value="Poista koko uutinen"/>
                         </form>
-            </div>
-        </div>  
-    </body>
+                        </div>
+                        </div>  
+                        </body>
 
-</html>
+                        </html>
