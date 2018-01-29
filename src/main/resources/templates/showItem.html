@@ -26,25 +26,29 @@ and open the template in the editor.
                     <li class="nav-item active">
                         <a class="nav-link" href="/">Uutiset <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
+                    </ul>
+                <ul>
+                    <li class="nav navbar-nav navbar-right">
                         <a class="nav-link" href="/kirjaudu">Kirjaudu</a>
                     </li>
+                </ul>
             </div>
         </nav>
 
         <div class="jumbotron">
             <div class="container">
+                <br><br>
                 <img th:src="${item.image}" alt="Ei kuvaa" height="200" width="400">
                 <p th:text="   ${item.time}"></p>
                 <h4 th:text="${item.name}"></h4>
                 <p th:text="   ${item.lead}"></p>
                 <p th:text="   ${item.text}"></p>
-                <p>Luvut:</p><p th:text="   ${item.reads}"></p>
+                <p>Lukukerrat: <a th:text=" ${item.reads}"></a></p>
                 <h5>Kirjoittaja(t):</h5>
                 <tr th:each="wri : ${itemWri}">
                     <li><a th:text="${wri}">Item writers</a></li>
                 </tr>
-                <h5>Kategoriat</h5>
+                <h5>Kategoriat:</h5>
                 <tr th:each="category : ${categories}">
                     <li><a th:text="${category}">Item name</a></li>
                 </tr>

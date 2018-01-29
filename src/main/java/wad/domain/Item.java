@@ -23,6 +23,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 public class Item extends AbstractPersistable<Long> {
 
     private String name;
+    @Column (length = 24000)
     private String lead;
     @Column (length = 24000)
     private String text;

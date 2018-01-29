@@ -25,7 +25,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 public class Category extends AbstractPersistable<Long> {
     private String name;
-    @ManyToMany(mappedBy = "categories", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "categories")
     private List<Item> items;
     
     public void add(Item m){

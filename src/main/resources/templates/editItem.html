@@ -33,80 +33,104 @@ and open the template in the editor.
                     <li class="nav-item">
                         <a class="nav-link" href="/hallinnoiKirjoittajia">Hallinnoi kirjoittajia</a>
                     </li>
-                    <li class="nav-item">
+                    </ul>
+                <ul>
+                    <li class="nav navbar-nav navbar-right">
                         <a class="nav-link" href="/kirjaudu">Kirjaudu</a>
                     </li>
+                </ul>
             </div>
         </nav>
         <div class="jumbotron">
             <div class="container">
-                <h4>Otsikko:</h4><p th:text="${item.name}"></p>
-
-                <h4>Päivämäärä:</h4><p th:text="${item.time}"></p>
-                <h4>Kategoriat:</h4>
-                <tr th:each="cat : ${itemCat}">
-                    <li><a th:text="${cat}">Item cateogory</a></li>
-                </tr>
-                <h4>Lukukerrat:</h4><p th:text="${item.reads}"></p>
-                <h4>Kuva:</h4><img th:src="${item.image}" alt="Ei kuvaa" height="200" width="400"> 
-                    <h4>Kirjoittaja(t):</h4>
-                    <tr th:each="wri : ${itemWri}">
-                        <li><a th:text="${wri}">Item writers</a></li>
+                <table style="border-collapse: separate; border-spacing: 50px;">
+                    <tr>
+                        <th>Asia<th>
+                        <th>Nykyinen tieto</th>
+                        <th>Muokkaa</th>
                     </tr>
-                    <h4>Ingressi:</h4><p th:text="${item.lead}"></p>
-                    <h4>Juttu:</h4><p th:text="${item.text}"></p>
-                    <br></br>
-                    <h3>Muokkaa</h3>
-                    <table>
-                        <li><form method="POST" th:action="@{/newName/{item}(item=${item.id})}">
+                    <tr> 
+                        <td><h5>Otsikko</h5><td>
+                        <td><a th:text="${item.name}" ></a></td>
+                        <td><form method="POST" th:action="@{/newName/{item}(item=${item.id})}">
                                 <input type="text" name="name"/>
                                 <input type="submit" value="Uusi otsikko"/>
                             </form>
-                        </li>
-
-                        <li><form method="POST" th:action="@{/setImage/{item}(item=${item.id})}">
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><h5>Kuva</h5><td>    
+                        <td><img th:src="${item.image}" alt="Ei kuvaa" height="200" width="400"> </td>
+                        <td><form method="POST" th:action="@{/setImage/{item}(item=${item.id})}">
                                 <input type="text" name="image"/>
                                 <input type="submit" value="Aseta kuvan url"/>
                             </form>
-                        </li>
-                        <li> <form method="POST" th:action="@{/asetaKategoria/{id}(id=${item.id})}">
-                                <select name="categoryId">
-                                    <option th:each="category : ${categories}"  th:value="${category.id}" th:text="${category.name}"></option>
-                                </select>
-                                <input type="submit" value="Aseta kategoria"/>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><h5>Ingressi</h5><td>
+                        <td><p th:text="${item.lead}" alt="Ingressi"></p></td>
+                        <td> <form method="POST" th:action="@{/setLead/{item}(item=${item.id})}">
+                                <input type="text" name="lead"/>
+                                <input type="submit" value="Aseta/muokkaa ingressiä"/>
                             </form>
-                        </li>
-                        <li> <form method="POST" th:action="@{/asetaKirjoittaja/{id}(id=${item.id})}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><h5>Juttu</h5><td>
+                        <td><p th:text="${item.text}" alt="Juttu"></p></td>
+                        <td> <textarea cols="40" rows="5" name="text" form="usrform"></textarea> 
+                            <form method="POST" th:action="@{/setText/{item}(item=${item.id})}" id="usrform">
+                                <input type="submit" value="Aseta juttu tai muokkaa sitä"/>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><h5>Kirjoittajat</h5><td>
+                        <td>
+                            <a th:each="wri : ${itemWri}" alt="Kirjoittajat">
+                                <li><a th:text="${wri}">Item writers</a></li>
+                            </a>
+                        </td>
+                        <td> <form method="POST" th:action="@{/asetaKirjoittaja/{id}(id=${item.id})}">
                                 <select name="writerId">
                                     <option th:each="writer : ${writers}"  th:value="${writer.id}" th:text="${writer.name}"></option>
                                 </select>
                                 <input type="submit" value="Aseta kirjoittaja"/>
                             </form>
-                        </li>
-                        <li> <form method="POST" th:action="@{/setLead/{item}(item=${item.id})}">
-                                <input type="text" name="lead"/>
-                                <input type="submit" value="Aseta/muokkaa ingressiä"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><h5>Kategoriat</h5><td>
+                        <td>
+                            <a th:each="cat : ${itemCat}" alt="Kateogoriat">
+                                <li><a th:text="${cat}">Item cateogory</a></li>
+                            </a>
+                        </td>
+                        <td> <form method="POST" th:action="@{/asetaKategoria/{id}(id=${item.id})}">
+                                <select name="categoryId">
+                                    <option th:each="category : ${categories}"  th:value="${category.id}" th:text="${category.name}"></option>
+                                </select>
+                                <input type="submit" value="Aseta kategoria"/>
                             </form>
-                        </li>
+                        </td>
+                        
+                    </tr>
+                </table>
+                    <br>
+                    <h3>Poista koko uutinen</h3>
+                    <form th:action="@{/{item}(item=${item.id})}" th:method="DELETE">
+                        <input type="submit" style="background-color: red" value="Poista koko uutinen"/>
+                    </form>  
                         <!--
                     <li><form method="POST" th:action="@{/image/{item}(item=${item.id})}" enctype="multipart/form-data">
                     <input type="file" name="file" id="file"/>
                      <input type="submit" value="Lisää jpg-kuva"/>
                         </form></li><br><-->
-                        <li> <form method="POST" th:action="@{/setText/{item}(item=${item.id})}" id="usrform">
-                                <input type="submit" value="Aseta juttu tai muokkaa sitä"/>
+            </div>
+        </div>  
+    </body>
 
-
-                            </form>
-                        </li><textarea cols="40" rows="5" name="text" form="usrform"></textarea>
-                    </table>
-                    <br>
-                        <h3>Poista koko uutinen</h3>
-                        <form th:action="@{/{item}(item=${item.id})}" th:method="DELETE">
-                            <input type="submit" style="background-color: red" value="Poista koko uutinen"/>
-                        </form>
-                        </div>
-                        </div>  
-                        </body>
-
-                        </html>
+</html>

@@ -6,48 +6,61 @@
             <title>Uutiset</title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style = "border-spacing: 10px;">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="/">Uutiset <span class="sr-only">(current)</span></a>
                     </li>
-                    
-                    <li class="nav-item">
+                 
+                    </ul>
+                <ul>
+                    <li class="nav navbar-nav navbar-right">
                         <a class="nav-link" href="/kirjaudu">Kirjaudu</a>
                     </li>
+                </ul>
             </div>
         </nav>
-
+        
         <div class="jumbotron">
+            
             <div class="container">
-                <h2>Uutiset</h2>
-                
-
-
+                <br><br>
                 <table style="border-collapse: separate; border-spacing: 10px;">
-                    <tr>
-                        <th><h5>Otsikko</h5></th>
-                        <th><h5>Ingressi</h5></th>
-                        <th><h5>Kuva</h5></th>
+                    <tr class="jumbotron-heading">
+                        <th><h1>Uutiset</h1></th>
                     </tr>
-
-                    <tr th:each="item : ${items}">
-                        <td><a th:href="@{/uutinen/{item}(item=${item.id})}" th:text="${item.name}">Item name</a></td>
-                        <td><a th:text="${item.lead}">Koska</a></td>
-                        <td><img th:src="${item.image}" alt="Ei kuvaa" height="40" width="80">
-                    </tr>
-
+                    <td><div>
+                            <a href="/">
+                                <form action="/lukujenMukaan">
+                                    <input class="btn btn-info" type="submit" value="Järjestä suuruusjärjestyksessä lukukertojen mukaan" />
+                                </form>
+                            </a>
+                        </div></td>
+                    <table style="border-collapse: separate; border-spacing: 10px;">
+                            <tr class="lead text-muted">
+                                <td></td>
+                            </tr>
+                            <tr th:each="item : ${items}">
+                                <td width="500px"> 
+                                    <div class="card mb-4 box-shadow" >
+                                        <img class="card-img-top" thdata-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="ei kuvaa" style="height: 225px; width: 500px; display: block;" th:src="${item.image}" data-holder-rendered="true">
+                                            <div class="card-body">
+                                                <h5><a th:href="@{/uutinen/{item}(item=${item.id})}" th:text="${item.name}"></a></h5>
+                                                <p class="card-text"th:text="${item.lead}" style="width: 500px;"></p>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <small class="text-muted" th:text="${item.time}"></small>
+                                                    </div>
+                                            </div>
+                                    </div>
+                                </td>
+                            </tr>
+                    </table>
                 </table>
-                <br></br>
-                <form action="/lukujenMukaan">
-                    <input type="submit" value="Järjestä suuruusjärjestyksessä lukukertojen mukaan" />
-                </form>
             </div>
         </div>
     </body>
-
 </html>

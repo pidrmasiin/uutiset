@@ -32,14 +32,17 @@ and open the template in the editor.
                     <li class="nav-item">
                         <a class="nav-link" href="/hallinnoiKirjoittajia">Hallinnoi kirjoittajia</a>
                     </li>
-                    <li class="nav-item">
+                    </ul>
+                <ul>
+                    <li class="nav navbar-nav navbar-right">
                         <a class="nav-link" href="/kirjaudu">Kirjaudu</a>
                     </li>
+                </ul>
             </div>
         </nav>
         <div class="jumbotron">
             <div class="container">
-                
+                <br><br>
                 <table>
                     <tr>
                         <th><h2>Kategoriat</h2></th>
@@ -51,8 +54,8 @@ and open the template in the editor.
                     </tr>
                 </table>
             </div>
-
-            <div class="container"><h2>Lisää kirjoittaja</h2>
+            <br><br>
+            <div class="container"><h4>Lisää kirjoittaja</h4>
 
                 <form method="POST" th:action="@{/lisaaKirjoittaja}">
                     <input type="text" name="name"/>
