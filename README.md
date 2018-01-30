@@ -1,5 +1,7 @@
 # UutisetHarjoitus
 
+* [Linkki sovellukseen](https://uutista.herokuapp.com/)
+
 Kirjautuminen
 ```
 user:toimittaja
